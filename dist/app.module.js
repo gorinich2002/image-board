@@ -12,6 +12,8 @@ const config_1 = require("@nestjs/config");
 const sequelize_1 = require("@nestjs/sequelize");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
+const user_model_1 = require("./user/user.model");
+const user_module_1 = require("./user/user.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -22,14 +24,15 @@ AppModule = __decorate([
             }),
             sequelize_1.SequelizeModule.forRoot({
                 dialect: 'postgres',
-                host: 'localhost',
-                port: 5432,
-                username: 'root',
-                password: 'root',
-                database: 'postgres',
-                models: [],
+                host: process.env['POSTGRES_HOST'],
+                port: Number(process.env['POSTGRES_PORT']),
+                username: process.env['POSTGRES_USER'],
+                password: process.env['POSTGRES_PASSWORD'],
+                database: process.env['POSTGRES_DB'],
+                models: [user_model_1.default],
                 autoLoadModels: true
-            })
+            }),
+            user_module_1.UserModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

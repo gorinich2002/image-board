@@ -14,6 +14,7 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const user_model_1 = require("./user/user.model");
 const user_module_1 = require("./user/user.module");
+const roles_module_1 = require("./roles/roles.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -32,7 +33,8 @@ AppModule = __decorate([
                 models: [user_model_1.default],
                 autoLoadModels: true
             }),
-            user_module_1.UserModule
+            user_module_1.UserModule,
+            roles_module_1.RolesModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

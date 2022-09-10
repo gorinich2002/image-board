@@ -7,6 +7,7 @@ import { UserController } from './user/user.controller';
 
 import User from './user/user.model';
 import { UserModule } from './user/user.module';
+import { RolesModule } from './roles/roles.module';
 
 @Module({
   imports: [
@@ -24,7 +25,8 @@ import { UserModule } from './user/user.module';
       autoLoadModels:true
 
     }),
-    UserModule
+    UserModule,
+    RolesModule
   ],
   controllers: [AppController],
   providers: [AppService],
